@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { borderBottom } from '@mui/system';
 import React from 'react';
 import Stone from './Stone';
@@ -6,6 +6,7 @@ import { CellType } from 'types';
 
 type CellProps = {
   cell: CellType;
+  onClick: (x: number, y: number) => void;
 };
 
 const cellStyle = {
@@ -26,9 +27,12 @@ const StoneBox = {
   transform: 'translate(-50%, -50%)',
 };
 
-const Cell: React.VFC<CellProps> = ({ cell }) => {
+const Cell: React.VFC<CellProps> = ({ cell, onClick }) => {
+  const putStone = () => {
+    onClick(cell.x, cell.y);
+  };
   return (
-    <Box sx={{ ...cellStyle }}>
+    <Box sx={{ ...cellStyle }} onClick={putStone}>
       <Box sx={{ ...StoneBox }}>
         <Stone state={cell.state} />
       </Box>
