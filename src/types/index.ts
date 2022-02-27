@@ -11,6 +11,29 @@ export type CellType = {
 
 export type AllCellsData = CellType[][];
 
+export enum Direction {
+  TOP = 'top',
+  TOP_RIGHT = 'topRight',
+  RIGHT = 'right',
+  BOTTOM_RIGHT = 'bottomRight',
+  BOTTOM = 'bottom',
+  BOTTOM_LEFT = 'bottomLeft',
+  LEFT = 'left',
+  TOP_LEFT = 'topLeft',
+}
+
+type CellPosition = {
+  x: number;
+  y: number;
+};
+
+export type CellState = {
+  enable: boolean;
+  cells: CellPosition[];
+};
+
+export type ReversibleInfo = { [key in Direction]: CellState };
+
 export type ReversibleState = {
   top: boolean;
   topRight: boolean;

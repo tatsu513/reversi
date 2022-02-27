@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import Stone from './Stone';
-import { CellType } from 'types';
+import { CellType, State } from 'types';
 
 type CellProps = {
   cell: CellType;
@@ -28,6 +28,7 @@ const StoneBox = {
 
 const Cell: React.VFC<CellProps> = ({ cell, onClick }) => {
   const putStone = () => {
+    if (cell.state !== State.NONE) return;
     onClick(cell.x, cell.y);
   };
   return (

@@ -6,12 +6,24 @@ const changeCellState = (
   currentData: AllCellsData,
   x: number,
   y: number,
-  state: State,
+  currentState: State,
 ): AllCellsData => {
-  console.log({ a: getReversibleStatus(currentData, x, y, state) });
-  // const bottomResult = searchBottom(currentData, x, y, state);
-  // const topResult = searchTop(bottomResult.data, x, y, state);
-  // if (topResult.error) return currentData;
+  const reversibleState = getReversibleStatus(currentData, x, y, currentState);
+  const success = Object.values(reversibleState)
+    .map((value) => value)
+    .some((v) => v);
+  if (!success) return currentData;
+  const newData: AllCellsData = JSON.parse(JSON.stringify(currentData));
+
+  const allTargetCells = Object.values(reversibleState).flatMap((value) => {
+    if (!value.enable) return [];
+    return value.cells;
+  });
+  allTargetCells.forEach((cell) => {
+    newData[cell.y][cell.x].state = currentState;
+    newData[y][x].state = currentState;
+  });
+  console.log(newData);
 
   // const successData = bottomResult.data.map((row, i) => {
   //   if (i !== y) return row;
@@ -20,7 +32,7 @@ const changeCellState = (
   //     return { x: cell.x, y: cell.y, state: state };
   //   });
   // });
-  return currentData;
+  return newData;
 };
 
 export default changeCellState;
