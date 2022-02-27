@@ -1,5 +1,4 @@
-import { Box, Button } from '@mui/material';
-import { borderBottom } from '@mui/system';
+import { Box } from '@mui/material';
 import React from 'react';
 import Stone from './Stone';
 import { CellType } from 'types';

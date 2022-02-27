@@ -1,4 +1,5 @@
 import { AllCellsData, State } from 'types';
+import searchBottom from './searchBottom';
 
 const changeCellState = (
   currentData: AllCellsData,
@@ -13,7 +14,8 @@ const changeCellState = (
       return { x: cell.x, y: cell.y, state: state };
     });
   });
-  return data;
+  const b = searchBottom(data, x, y, state);
+  return b.data;
 };
 
 export default changeCellState;

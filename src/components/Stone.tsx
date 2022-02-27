@@ -15,7 +15,6 @@ const stone = {
 };
 
 const Stone: React.VFC<StoneProps> = ({ state }) => {
-  console.log(state);
   const color =
     state === State.WHITE
       ? 'white'
