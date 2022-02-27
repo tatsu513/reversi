@@ -9,18 +9,21 @@ const searchBottom = (
 ): { data: AllCellsData; error: boolean } => {
   const localData: AllCellsData = JSON.parse(JSON.stringify(currentData));
   let error = false;
-  const newState = getNextState(state);
 
   for (let i = 0; i < localData.length; i++) {
-    if (i > y) {
-      const data = localData[i];
-      const targetCellState = data[x].state;
-      if (i === y + 1 && targetCellState === state) {
+    if (i + y > 7) {
+      console.log({ i, y });
+      const targetRow = localData[i];
+      const targetCellState = targetRow[x].state;
+      if (
+        (i === y + 1 && targetCellState === state) ||
+        (i === y + 1 && targetCellState === State.NONE)
+      ) {
         error = true;
         break;
       }
       if (state !== targetCellState) {
-        localData[i][x].state = newState;
+        localData[i][x].state = state;
       }
       if (state === targetCellState) {
         break;

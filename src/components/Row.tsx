@@ -10,7 +10,6 @@ type RowProps = {
 };
 
 const Row: React.VFC<RowProps> = ({ num, row, onClick }) => {
-  console.log({ row });
   return (
     <Box display='flex'>
       {row.map((cell, i) => (

@@ -10,3 +10,14 @@ export type CellType = {
 };
 
 export type AllCellsData = CellType[][];
+
+export type ReversibleState = {
+  top: boolean;
+  topRight: boolean;
+  right: boolean;
+  bottomRight: boolean;
+  bottom: boolean;
+  bottomLeft: boolean;
+  left: boolean;
+  topLeft: boolean;
+};
