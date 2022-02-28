@@ -33,6 +33,7 @@ export type CellState = {
 };
 
 export type ReversibleInfo = { [key in Direction]: CellState };
+export type PredictState = { [key in Direction]: boolean };
 
 export type ReversibleState = {
   top: boolean;

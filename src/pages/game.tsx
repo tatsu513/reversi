@@ -2,14 +2,14 @@ import { Box, Button, Typography } from '@mui/material';
 import Board from 'components/Board';
 import changeCellState from 'logics/changeCellState';
 import getTurnColor from 'logics/converter/getTurnColor';
-import getHasEnableCells from 'logics/getHasEnableCells';
+import getCanPut from 'logics/getCanPut';
 import getNumbOfStone from 'logics/getNumbOfStone';
 import getReversibleStatus from 'logics/getReversibleStatus';
 import { getAllCellsData } from 'models/getAllCellsData';
 import getNextState from 'models/getNextState';
 import { NextPage } from 'next';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AllCellsData, ReversibleInfo, State } from 'types';
+import { AllCellsData, State } from 'types';
 
 const stoneStyle = {
   display: 'inline-block',
@@ -40,22 +40,26 @@ const Index: NextPage = () => {
       reversibleState,
     );
     setData(updatedData);
-    // setCanPut(getHasEnableCells(updatedData, currentState));
     setCurrentState(getNextState(currentState));
   };
-
-  useEffect(() => {
-    const canPutStatus = getHasEnableCells(data, currentState);
-    console.log({ canPutStatus });
-    setCanPut(canPutStatus);
-  }, [data, currentState]);
 
   const handlePassClick = useCallback(() => {
     setCurrentState(getNextState(currentState));
   }, [currentState]);
+
   const handleMoreClick = useCallback(() => {
     setData(getAllCellsData());
   }, []);
+
+  useEffect(() => {
+    const canPuts = data.flatMap((row) => {
+      return row.flatMap((cell) => {
+        if (cell.state !== State.NONE) return [];
+        return getCanPut(data, cell.x, cell.y, currentState);
+      });
+    });
+    setCanPut(canPuts.some((v) => !!v));
+  }, [data, currentState]);
   return (
     <Box
       display='flex'

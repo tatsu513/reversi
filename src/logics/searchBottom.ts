@@ -1,5 +1,4 @@
-import getNextState from 'models/getNextState';
-import { AllCellsData, CellType, State } from 'types';
+import { AllCellsData, State } from 'types';
 
 const searchBottom = (
   currentData: AllCellsData,

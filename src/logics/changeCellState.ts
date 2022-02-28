@@ -1,6 +1,4 @@
 import { AllCellsData, ReversibleInfo, State } from 'types';
-import getReversibleStatus from './getReversibleStatus';
-import searchBottom from './searchBottom';
 
 const changeCellState = (
   currentData: AllCellsData,
