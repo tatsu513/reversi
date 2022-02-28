@@ -12,7 +12,6 @@ const searchBottom = (
 
   for (let i = 0; i < localData.length; i++) {
     if (i + y > 7) {
-      console.log({ i, y });
       const targetRow = localData[i];
       const targetCellState = targetRow[x].state;
       if (

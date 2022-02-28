@@ -5,8 +5,8 @@ import getReversibleStatus from './getReversibleStatus';
 const getHasEnableCells = (
   updatedData: AllCellsData,
   currentState: State,
-): ReversibleInfo[] => {
-  return updatedData.flatMap((row) => {
+): boolean => {
+  const canPutPosition = updatedData.flatMap((row) => {
     return row.flatMap((cell) => {
       if (cell.state !== State.NONE) return [];
       const hasEnableCell = getReversibleStatus(
@@ -16,9 +16,11 @@ const getHasEnableCells = (
         getNextState(currentState),
       );
       if (!hasEnableCell) return [];
-      return hasEnableCell;
+      return { x: cell.x, y: cell.y };
     });
   });
+  console.log({ canPutPosition });
+  return canPutPosition.length > 0;
 };
 
 export default getHasEnableCells;

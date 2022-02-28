@@ -8,7 +8,7 @@ import getReversibleStatus from 'logics/getReversibleStatus';
 import { getAllCellsData } from 'models/getAllCellsData';
 import getNextState from 'models/getNextState';
 import { NextPage } from 'next';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AllCellsData, ReversibleInfo, State } from 'types';
 
 const stoneStyle = {
@@ -40,13 +40,19 @@ const Index: NextPage = () => {
       reversibleState,
     );
     setData(updatedData);
-    setCanPut(getHasEnableCells(updatedData, currentState).length > 0);
+    // setCanPut(getHasEnableCells(updatedData, currentState));
     setCurrentState(getNextState(currentState));
   };
 
+  useEffect(() => {
+    const canPutStatus = getHasEnableCells(data, currentState);
+    console.log({ canPutStatus });
+    setCanPut(canPutStatus);
+  }, [data, currentState]);
+
   const handlePassClick = useCallback(() => {
     setCurrentState(getNextState(currentState));
-  }, []);
+  }, [currentState]);
   const handleMoreClick = useCallback(() => {
     setData(getAllCellsData());
   }, []);

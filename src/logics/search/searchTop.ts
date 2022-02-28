@@ -28,6 +28,9 @@ const searchTop = (
       break;
     }
   }
+  if (!info.enable && info.cells.length > 0) {
+    info.cells = [];
+  }
   return info;
 };
 
