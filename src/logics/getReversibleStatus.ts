@@ -13,7 +13,7 @@ const getReversibleStatus = (
   x: number,
   y: number,
   state: State,
-): ReversibleInfo => {
+): ReversibleInfo | null => {
   const reversibleState: ReversibleInfo = {
     top: searchTop(data, x, y, state),
     topRight: searchTopRight(data, x, y, state),
@@ -24,7 +24,10 @@ const getReversibleStatus = (
     left: searchLeft(data, x, y, state),
     topLeft: searchTopLeft(data, x, y, state),
   };
-  return reversibleState;
+  const success = Object.values(reversibleState)
+    .map((value) => value)
+    .some((v) => !!v.enable);
+  return success ? reversibleState : null;
 };
 
 export default getReversibleStatus;
