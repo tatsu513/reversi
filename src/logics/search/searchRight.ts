@@ -28,6 +28,7 @@ const searchRight = (
       break;
     }
   }
+  console.log({ info });
   return info;
 };
 

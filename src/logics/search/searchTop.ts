@@ -12,7 +12,7 @@ const searchTop = (
     cells: [],
   };
   if (y <= 1) return info;
-  for (let i = 0; i < y; i++) {
+  for (let i = 0; i < y + 1; i++) {
     if (y - i < 0) break;
     if (i === 0) continue;
     // 探索中のセル

@@ -24,6 +24,7 @@ const getReversibleStatus = (
     left: searchLeft(data, x, y, state),
     topLeft: searchTopLeft(data, x, y, state),
   };
+  console.log({ reversibleState });
   const success = Object.values(reversibleState)
     .map((value) => value)
     .some((v) => !!v.enable);

@@ -2,6 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import Board from 'components/Board';
 import changeCellState from 'logics/changeCellState';
 import getTurnColor from 'logics/converter/getTurnColor';
+import getHasEnableCells from 'logics/getHasEnableCells';
 import getNumbOfStone from 'logics/getNumbOfStone';
 import getReversibleStatus from 'logics/getReversibleStatus';
 import { getAllCellsData } from 'models/getAllCellsData';
@@ -26,18 +27,28 @@ const Index: NextPage = () => {
   const [canPut, setCanPut] = useState(true);
 
   const counter = getNumbOfStone(data);
-
-  const stoneColor = currentState === State.BLACK ? 'black' : 'white';
-
+  const enableMoreButton =
+    counter.total === 64 || counter.black === 0 || counter.white === 0;
   const putStone = (x: number, y: number) => {
     const reversibleState = getReversibleStatus(data, x, y, currentState);
     if (!reversibleState) return;
-    setData(changeCellState(data, x, y, currentState, reversibleState));
+    const updatedData = changeCellState(
+      data,
+      x,
+      y,
+      currentState,
+      reversibleState,
+    );
+    setData(updatedData);
+    setCanPut(getHasEnableCells(updatedData, currentState).length > 0);
     setCurrentState(getNextState(currentState));
   };
 
   const handlePassClick = useCallback(() => {
     setCurrentState(getNextState(currentState));
+  }, []);
+  const handleMoreClick = useCallback(() => {
+    setData(getAllCellsData());
   }, []);
   return (
     <Box
@@ -66,14 +77,27 @@ const Index: NextPage = () => {
         <Board data={data} onClick={putStone} />
       </Box>
       <Box sx={{ width: '50%', margin: '24px auto' }}>
-        <Button
-          onClick={handlePassClick}
-          variant='contained'
-          size='large'
-          sx={{ width: '100%' }}
-        >
-          パス
-        </Button>
+        {!enableMoreButton && (
+          <Button
+            onClick={handlePassClick}
+            variant='contained'
+            size='large'
+            sx={{ width: '100%' }}
+            disabled={canPut}
+          >
+            パス
+          </Button>
+        )}
+        {enableMoreButton && (
+          <Button
+            onClick={handleMoreClick}
+            variant='contained'
+            size='large'
+            sx={{ width: '100%' }}
+          >
+            もう一度プレイ
+          </Button>
+        )}
       </Box>
     </Box>
   );
