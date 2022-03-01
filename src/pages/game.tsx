@@ -26,9 +26,14 @@ const Index: NextPage = () => {
   const [currentState, setCurrentState] = useState<State>(State.BLACK);
   const [canPut, setCanPut] = useState(true);
 
+  const [numOfPass, setNumOfPass] = useState(0);
+
   const counter = getNumbOfStone(data);
   const enableMoreButton =
-    counter.total === 64 || counter.black === 0 || counter.white === 0;
+    counter.total === 64 ||
+    counter.black === 0 ||
+    counter.white === 0 ||
+    numOfPass > 1;
   const putStone = (x: number, y: number) => {
     const reversibleState = getReversibleStatus(data, x, y, currentState);
     if (!reversibleState) return;
@@ -58,12 +63,15 @@ const Index: NextPage = () => {
         return getCanPut(data, cell.x, cell.y, currentState);
       });
     });
-    setCanPut(canPuts.some((v) => !!v));
+    const isOk = canPuts.some((v) => !!v);
+    isOk ? setNumOfPass(0) : setNumOfPass((prev) => prev++);
+    setCanPut(isOk);
   }, [data, currentState]);
   return (
     <Box
       display='flex'
       justifyContent='center'
+      position='relative'
       sx={{ margin: '80px auto', flexFlow: 'column', width: '512px' }}
     >
       <Box display='flex' justifyContent='space-between'>
@@ -109,6 +117,22 @@ const Index: NextPage = () => {
           </Button>
         )}
       </Box>
+      {enableMoreButton && (
+        <Box
+          sx={{
+            width: '100%',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            backgroundColor: 'white',
+            textAlign: 'center',
+          }}
+          position='absolute'
+        >
+          <Typography variant='h2' sx={{ lineHeight: '2' }}>
+            【{counter.black > counter.white ? '黒' : '白'}】の勝ち
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
