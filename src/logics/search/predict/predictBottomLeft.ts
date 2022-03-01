@@ -24,7 +24,7 @@ const predictBottomLeft = (
       cells.push({ x, y });
     }
     if (i >= 2 && target.state === state) {
-      isClosed = true;
+      if (cells.length > 0) isClosed = true;
       break;
     }
   }
