@@ -1,4 +1,4 @@
-import { State } from 'types';
+import { State } from 'src/types';
 
 const getTurnColor = (state: State) => {
   switch (state) {

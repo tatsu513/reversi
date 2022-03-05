@@ -1,18 +1,18 @@
 import { Box, Button, Typography } from '@mui/material';
-import Board from 'components/Board';
-import GameData from 'components/GameData';
-import Judgement from 'components/Judgement';
-import MainButton from 'components/MainButton';
-import reverseStones from 'logics/reverseStones';
-import getTurnColor from 'logics/converter/getTurnColor';
-import getCanPut from 'logics/getCanPut';
-import getNumberOfStone from 'logics/getNumberOfStone';
-import getReverseData from 'logics/getReverseData';
-import { getInitialBoard } from 'models/getInitialBoard';
-import getNextStone from 'models/getNextStone';
 import { NextPage } from 'next';
 import React, { useCallback, useEffect, useState } from 'react';
-import { BoardData, State } from 'types';
+import Board from 'src/components/Board';
+import GameData from 'src/components/GameData';
+import Judgement from 'src/components/Judgement';
+import MainButton from 'src/components/MainButton';
+import getTurnColor from 'src/logics/converter/getTurnColor';
+import getCanPut from 'src/logics/getCanPut';
+import getNumberOfStone from 'src/logics/getNumberOfStone';
+import getReverseData from 'src/logics/getReverseData';
+import reverseStones from 'src/logics/reverseStones';
+import { getInitialBoard } from 'src/models/getInitialBoard';
+import getNextStone from 'src/models/getNextStone';
+import { BoardData, State } from 'src/types';
 
 const Index: NextPage = () => {
   const [boardData, setBoardData] = useState<BoardData>(getInitialBoard());

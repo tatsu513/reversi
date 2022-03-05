@@ -1,4 +1,4 @@
-import { BoardData, State } from 'types';
+import { BoardData, State } from 'src/types';
 
 // 石の数を記録
 const getNumberOfStone = (data: BoardData) => {

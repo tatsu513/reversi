@@ -1,4 +1,4 @@
-import { BoardData, PredictState, State } from 'types';
+import { BoardData, PredictState, State } from 'src/types';
 import predictBottom from './check/predictBottom';
 import predictBottomLeft from './check/predictBottomLeft';
 import predictBottomRight from './check/predictBottomRight';

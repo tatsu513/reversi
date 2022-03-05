@@ -1,4 +1,4 @@
-import { BoardData, ReversibleInfo, ReversibleState, State } from 'types';
+import { BoardData, ReversibleInfo, ReversibleState, State } from 'src/types';
 import searchBottom from './search/searchBottom';
 import searchBottomLeft from './search/searchBottomLeft';
 import searchBottomRight from './search/searchBottomRight';

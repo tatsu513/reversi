@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import events from 'events';
 import React from 'react';
-import { State } from 'types';
+import { State } from 'src/types';
 
 type StoneProps = {
   state: State;

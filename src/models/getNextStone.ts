@@ -1,4 +1,4 @@
-import { State } from 'types';
+import { State } from 'src/types';
 // 次に置く石の色
 const getNextStone = (state: State) => {
   switch (state) {

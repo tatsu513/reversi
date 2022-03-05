@@ -1,5 +1,5 @@
-import getNextStone from 'models/getNextStone';
-import { BoardData, State } from 'types';
+import getNextStone from 'src/models/getNextStone';
+import { BoardData, State } from 'src/types';
 
 const predictTop = (
   data: BoardData,

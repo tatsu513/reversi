@@ -1,4 +1,4 @@
-import { BoardData, ReversibleInfo, State } from 'types';
+import { BoardData, ReversibleInfo, State } from 'src/types';
 
 // 石を反転してボードの状態を返す
 const reverseStones = (

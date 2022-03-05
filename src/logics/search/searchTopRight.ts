@@ -1,5 +1,5 @@
-import getNextStone from 'models/getNextStone';
-import { BoardData, CellState, State } from 'types';
+import getNextStone from 'src/models/getNextStone';
+import { BoardData, CellState, State } from 'src/types';
 
 const searchTopRight = (
   data: BoardData,

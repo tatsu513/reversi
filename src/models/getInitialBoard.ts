@@ -1,4 +1,4 @@
-import { BoardData, State } from 'types';
+import { BoardData, State } from 'src/types';
 // 初期セル
 const getInitialCells = (cellNum: number, rowNum: number) => {
   if (rowNum === 3 && cellNum === 3) {

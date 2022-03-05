@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import Stone from './Stone';
-import { CellData, State } from 'types';
+import { CellData, State } from 'src/types';
 
 type CellProps = {
   cell: CellData;

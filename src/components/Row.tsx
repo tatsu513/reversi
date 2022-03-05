@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { RowData } from 'types';
+import { RowData } from 'src/types';
 import Cell from './Cell';
 
 type RowProps = {

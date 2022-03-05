@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { BoardData } from 'types';
+import { BoardData } from 'src/types';
 import Row from './Row';
 
 type BoardProps = {
