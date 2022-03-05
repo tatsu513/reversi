@@ -7,6 +7,7 @@ const getNextStone = (state: State) => {
     case State.WHITE:
       return State.BLACK;
     default:
+      console.error('getNextStoneの引数に不正なデータが指定されました');
       throw new Error('getNextStoneの引数に不正なデータが指定されました');
   }
 };
