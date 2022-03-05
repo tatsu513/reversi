@@ -1,8 +1,8 @@
-import getNextState from 'models/getNextState';
-import { AllCellsData, CellState, State } from 'types';
+import getNextStone from 'models/getNextStone';
+import { BoardData, CellState, State } from 'types';
 
 const searchTopLeft = (
-  data: AllCellsData,
+  data: BoardData,
   x: number,
   y: number,
   state: State,
@@ -21,7 +21,7 @@ const searchTopLeft = (
     if (i === 0) continue;
     // 探索中のセル
     const target = data[y - i][x - i];
-    const nextState = getNextState(state);
+    const nextState = getNextStone(state);
     if (i === 1 && (target.state === state || target.state === State.NONE))
       break;
     if (i >= 1 && target.state === nextState) {

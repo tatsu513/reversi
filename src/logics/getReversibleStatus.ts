@@ -1,4 +1,4 @@
-import { AllCellsData, ReversibleInfo, ReversibleState, State } from 'types';
+import { BoardData, ReversibleInfo, ReversibleState, State } from 'types';
 import searchBottom from './search/searchBottom';
 import searchBottomLeft from './search/searchBottomLeft';
 import searchBottomRight from './search/searchBottomRight';
@@ -9,7 +9,7 @@ import searchTopLeft from './search/searchTopLeft';
 import searchTopRight from './search/searchTopRight';
 
 const getReversibleStatus = (
-  data: AllCellsData,
+  data: BoardData,
   x: number,
   y: number,
   state: State,

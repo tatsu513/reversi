@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { AllCellsData } from 'types';
+import { BoardData } from 'types';
 import Row from './Row';
 
 type BoardProps = {
-  data: AllCellsData;
+  data: BoardData;
   onClick: (x: number, y: number) => void;
 };
 

@@ -1,4 +1,4 @@
-import { AllCellsData, PredictState, State } from 'types';
+import { BoardData, PredictState, State } from 'types';
 import predictBottom from './search/predict/predictBottom';
 import predictBottomLeft from './search/predict/predictBottomLeft';
 import predictBottomRight from './search/predict/predictBottomRight';
@@ -9,7 +9,7 @@ import predictTopLeft from './search/predict/predictTopLeft';
 import predictTopRight from './search/predict/predictTopRight';
 
 const getCanPut = (
-  data: AllCellsData,
+  data: BoardData,
   x: number,
   y: number,
   state: State,

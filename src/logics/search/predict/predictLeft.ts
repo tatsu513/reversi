@@ -1,7 +1,7 @@
-import { AllCellsData, State } from 'types';
+import { BoardData, State } from 'types';
 
 const predictLeft = (
-  data: AllCellsData,
+  data: BoardData,
   x: number,
   y: number,
   state: State,

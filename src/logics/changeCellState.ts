@@ -1,13 +1,13 @@
-import { AllCellsData, ReversibleInfo, State } from 'types';
+import { BoardData, ReversibleInfo, State } from 'types';
 
 const changeCellState = (
-  currentData: AllCellsData,
+  currentData: BoardData,
   x: number,
   y: number,
   currentState: State,
   reversibleState: ReversibleInfo,
-): AllCellsData => {
-  const newData: AllCellsData = JSON.parse(JSON.stringify(currentData));
+): BoardData => {
+  const newData: BoardData = JSON.parse(JSON.stringify(currentData));
   const allTargetCells = Object.values(reversibleState).flatMap((value) => {
     if (!value.enable) return [];
     return value.cells;

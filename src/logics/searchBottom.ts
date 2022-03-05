@@ -1,12 +1,12 @@
-import { AllCellsData, State } from 'types';
+import { BoardData, State } from 'types';
 
 const searchBottom = (
-  currentData: AllCellsData,
+  currentData: BoardData,
   x: number,
   y: number,
   state: State,
-): { data: AllCellsData; error: boolean } => {
-  const localData: AllCellsData = JSON.parse(JSON.stringify(currentData));
+): { data: BoardData; error: boolean } => {
+  const localData: BoardData = JSON.parse(JSON.stringify(currentData));
   let error = false;
 
   for (let i = 0; i < localData.length; i++) {

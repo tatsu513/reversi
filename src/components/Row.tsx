@@ -1,11 +1,11 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import { CellType } from 'types';
+import { RowData } from 'types';
 import Cell from './Cell';
 
 type RowProps = {
   num: number;
-  row: CellType[];
+  row: RowData;
   onClick: (x: number, y: number) => void;
 };
 

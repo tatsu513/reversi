@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import Stone from './Stone';
-import { CellType, State } from 'types';
+import { CellData, State } from 'types';
 
 type CellProps = {
-  cell: CellType;
+  cell: CellData;
   onClick: (x: number, y: number) => void;
 };
 

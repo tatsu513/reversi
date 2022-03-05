@@ -1,7 +1,7 @@
-import { AllCellsData, CellState, State } from 'types';
+import { BoardData, CellState, State } from 'types';
 
 const predictTopLeft = (
-  data: AllCellsData,
+  data: BoardData,
   x: number,
   y: number,
   state: State,

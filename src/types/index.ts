@@ -1,15 +1,19 @@
+// 石の色
 export enum State {
   WHITE = 'white',
   BLACK = 'black',
   NONE = 'none',
 }
-export type CellType = {
+// セルのデータ
+export type CellData = {
   x: number;
   y: number;
   state: State;
 };
-
-export type AllCellsData = CellType[][];
+// 行のデータ
+export type RowData = CellData[];
+// ボード全体のデータ
+export type BoardData = RowData[];
 
 export enum Direction {
   TOP = 'top',

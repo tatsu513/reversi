@@ -5,11 +5,11 @@ import getTurnColor from 'logics/converter/getTurnColor';
 import getCanPut from 'logics/getCanPut';
 import getNumbOfStone from 'logics/getNumbOfStone';
 import getReversibleStatus from 'logics/getReversibleStatus';
-import { getAllCellsData } from 'models/getAllCellsData';
-import getNextState from 'models/getNextState';
+import { getInitialBoard } from 'models/getInitialBoard';
+import getNextStone from 'models/getNextStone';
 import { NextPage } from 'next';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AllCellsData, State } from 'types';
+import { BoardData, State } from 'types';
 
 const stoneStyle = {
   display: 'inline-block',
@@ -22,7 +22,7 @@ const stoneStyle = {
 };
 
 const Index: NextPage = () => {
-  const [data, setData] = useState<AllCellsData>(getAllCellsData());
+  const [data, setData] = useState<BoardData>(getInitialBoard());
   const [currentState, setCurrentState] = useState<State>(State.BLACK);
   const [canPut, setCanPut] = useState(true);
 
@@ -45,15 +45,15 @@ const Index: NextPage = () => {
       reversibleState,
     );
     setData(updatedData);
-    setCurrentState(getNextState(currentState));
+    setCurrentState(getNextStone(currentState));
   };
 
   const handlePassClick = useCallback(() => {
-    setCurrentState(getNextState(currentState));
+    setCurrentState(getNextStone(currentState));
   }, [currentState]);
 
   const handleMoreClick = useCallback(() => {
-    setData(getAllCellsData());
+    setData(getInitialBoard());
   }, []);
 
   useEffect(() => {

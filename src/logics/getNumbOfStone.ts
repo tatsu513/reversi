@@ -1,6 +1,6 @@
-import { AllCellsData, State } from 'types';
+import { BoardData, State } from 'types';
 
-const getNumbOfStone = (data: AllCellsData) => {
+const getNumbOfStone = (data: BoardData) => {
   const black = data.flatMap((row) => {
     return row.flatMap((cell) => {
       if (cell.state !== State.BLACK) return [];
