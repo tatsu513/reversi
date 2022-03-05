@@ -17,14 +17,14 @@ const predictTop = (
   for (let i = 0; i < y + 1; i++) {
     // 自分の列は探索しない
     if (i === 0) continue;
-    // 探索する行がボーダから出る場合は探索終了
+    // ボーダから出る場合は探索終了
     if (y - i < 0) break;
     // 探索中のセル
     const target = data[y - i][x];
-    // 1つ下が同じ色or石がなければ探索終了
+    // 次のセルが同じ色or石がなければ探索終了
     if (i === 1 && (target.state === state || target.state === State.NONE))
       break;
-    // 1つ隣以上が相手の石の場合データをpush
+    // 探索中のセルが相手の石の場合データをpush
     if (i >= 1 && target.state === nextState) {
       cells.push({ x, y });
     }

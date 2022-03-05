@@ -21,17 +21,17 @@ const predictBottomLeft = (
   // ループする回数を算出
   const loopNum = yDistance - xDistance > 0 ? yDistance : xDistance;
   for (let i = 0; i < loopNum; i++) {
-    // 自分の列・行は探索しない
+    // 自分のセルは探索しない
     if (i === 0) continue;
     // ボードから出る場合は探索終了
     if (y + i > 7) break;
     if (x - i < 0) break;
     // 探索中のセル
     const target = data[y + i][x - i];
-    // 1つ左下が同じ色or石がなければ探索終了
+    // 次のセルが同じ色or石がなければ探索終了
     if (i === 1 && (target.state === state || target.state === State.NONE))
       break;
-    // 1つ左下以上が相手の石の場合データをpush
+    // 探索中のセルが相手の石の場合データをpush
     if (i >= 1 && target.state === nextState) {
       cells.push({ x, y });
     }

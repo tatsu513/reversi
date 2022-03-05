@@ -21,10 +21,10 @@ const predictBottom = (
     if (y + i > 7) break;
     // 探索中のセル
     const target = data[y + i][x];
-    // 1つ下が同じ色or石がなければ探索終了
+    // 次のセルが同じ色or石がなければ探索終了
     if (i === 1 && (target.state === state || target.state === State.NONE))
       break;
-    // 1つ隣以上が相手の石の場合データをpush
+    // 探索中のセルが相手の石の場合データをpush
     if (i >= 1 && target.state === nextState) {
       cells.push({ x, y });
     }
