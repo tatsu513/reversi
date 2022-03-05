@@ -1,5 +1,6 @@
 import { BoardData, ReversibleInfo, State } from 'types';
 
+// 石を反転してボードの状態を返す
 const reverseStones = (
   currentData: BoardData,
   x: number,
@@ -7,16 +8,18 @@ const reverseStones = (
   currentState: State,
   reversibleState: ReversibleInfo,
 ): BoardData => {
-  const newData: BoardData = JSON.parse(JSON.stringify(currentData));
-  const allTargetCells = Object.values(reversibleState).flatMap((value) => {
+  const localData: BoardData = JSON.parse(JSON.stringify(currentData));
+  // 反転するセルを抽出
+  const targetCells = Object.values(reversibleState).flatMap((value) => {
     if (!value.enable) return [];
     return value.cells;
   });
-  allTargetCells.forEach((cell) => {
-    newData[cell.y][cell.x].state = currentState;
-    newData[y][x].state = currentState;
+  // 抽出したセルのデータをもとに反転させる
+  targetCells.forEach((cell) => {
+    localData[cell.y][cell.x].state = currentState;
+    localData[y][x].state = currentState;
   });
-  return newData;
+  return localData;
 };
 
 export default reverseStones;

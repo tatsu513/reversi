@@ -8,6 +8,7 @@ import searchTop from './search/searchTop';
 import searchTopLeft from './search/searchTopLeft';
 import searchTopRight from './search/searchTopRight';
 
+// 反転できるセルの情報を取得して返す
 const getReverseData = (
   data: BoardData,
   x: number,

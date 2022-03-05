@@ -8,6 +8,7 @@ import predictTop from './search/predict/predictTop';
 import predictTopLeft from './search/predict/predictTopLeft';
 import predictTopRight from './search/predict/predictTopRight';
 
+// 置けるセルがあるかのチェック
 const getCanPut = (data: BoardData, state: State): boolean => {
   const reverseData = data.flatMap((row) => {
     return row.flatMap((cell) => {

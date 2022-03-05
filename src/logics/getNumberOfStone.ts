@@ -1,5 +1,6 @@
 import { BoardData, State } from 'types';
 
+// 石の数を記録
 const getNumberOfStone = (data: BoardData) => {
   const black = data.flatMap((row) => {
     return row.flatMap((cell) => {
