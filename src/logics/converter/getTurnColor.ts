@@ -7,7 +7,8 @@ const getTurnColor = (state: State) => {
     case State.WHITE:
       return '白';
     default:
-      return 'Loading';
+      console.error('whiteとblack以外が指定されました');
+      throw new Error('whiteとblack以外が指定されました');
   }
 };
 

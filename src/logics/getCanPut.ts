@@ -1,12 +1,12 @@
 import { BoardData, PredictState, State } from 'types';
-import predictBottom from './search/predict/predictBottom';
-import predictBottomLeft from './search/predict/predictBottomLeft';
-import predictBottomRight from './search/predict/predictBottomRight';
-import predictLeft from './search/predict/predictLeft';
-import predictRight from './search/predict/predictRight';
-import predictTop from './search/predict/predictTop';
-import predictTopLeft from './search/predict/predictTopLeft';
-import predictTopRight from './search/predict/predictTopRight';
+import predictBottom from './check/predictBottom';
+import predictBottomLeft from './check/predictBottomLeft';
+import predictBottomRight from './check/predictBottomRight';
+import predictLeft from './check/predictLeft';
+import predictRight from './check/predictRight';
+import predictTop from './check/predictTop';
+import predictTopLeft from './check/predictTopLeft';
+import predictTopRight from './check/predictTopRight';
 
 // 置けるセルがあるかのチェック
 const getCanPut = (data: BoardData, state: State): boolean => {

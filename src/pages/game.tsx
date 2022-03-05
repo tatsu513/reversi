@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import Board from 'components/Board';
-import GameData from 'components/gameData';
+import GameData from 'components/GameData';
 import Judgement from 'components/Judgement';
 import MainButton from 'components/MainButton';
 import reverseStones from 'logics/reverseStones';
