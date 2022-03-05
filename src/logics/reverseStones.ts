@@ -1,6 +1,6 @@
 import { BoardData, ReversibleInfo, State } from 'types';
 
-const changeCellState = (
+const reverseStones = (
   currentData: BoardData,
   x: number,
   y: number,
@@ -19,4 +19,4 @@ const changeCellState = (
   return newData;
 };
 
-export default changeCellState;
+export default reverseStones;

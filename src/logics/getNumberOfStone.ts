@@ -1,6 +1,6 @@
 import { BoardData, State } from 'types';
 
-const getNumbOfStone = (data: BoardData) => {
+const getNumberOfStone = (data: BoardData) => {
   const black = data.flatMap((row) => {
     return row.flatMap((cell) => {
       if (cell.state !== State.BLACK) return [];
@@ -20,4 +20,4 @@ const getNumbOfStone = (data: BoardData) => {
   };
 };
 
-export default getNumbOfStone;
+export default getNumberOfStone;

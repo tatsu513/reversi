@@ -8,26 +8,26 @@ import predictTop from './search/predict/predictTop';
 import predictTopLeft from './search/predict/predictTopLeft';
 import predictTopRight from './search/predict/predictTopRight';
 
-const getCanPut = (
-  data: BoardData,
-  x: number,
-  y: number,
-  state: State,
-): boolean => {
-  const reversibleState: PredictState = {
-    top: predictTop(data, x, y, state),
-    topRight: predictTopRight(data, x, y, state),
-    right: predictRight(data, x, y, state),
-    bottomRight: predictBottomRight(data, x, y, state),
-    bottom: predictBottom(data, x, y, state),
-    bottomLeft: predictBottomLeft(data, x, y, state),
-    left: predictLeft(data, x, y, state),
-    topLeft: predictTopLeft(data, x, y, state),
-  };
-  const success = Object.values(reversibleState)
-    .map((b) => b)
-    .some((v) => !!v);
-  return success;
+const getCanPut = (data: BoardData, state: State): boolean => {
+  const reverseData = data.flatMap((row) => {
+    return row.flatMap((cell) => {
+      if (cell.state !== State.NONE) return [];
+      const reversible = {
+        top: predictTop(data, cell.x, cell.y, state),
+        topRight: predictTopRight(data, cell.x, cell.y, state),
+        right: predictRight(data, cell.x, cell.y, state),
+        bottomRight: predictBottomRight(data, cell.x, cell.y, state),
+        bottom: predictBottom(data, cell.x, cell.y, state),
+        bottomLeft: predictBottomLeft(data, cell.x, cell.y, state),
+        left: predictLeft(data, cell.x, cell.y, state),
+        topLeft: predictTopLeft(data, cell.x, cell.y, state),
+      };
+      return Object.values(reversible)
+        .map((b) => b)
+        .some((v) => !!v);
+    });
+  });
+  return reverseData.some((d) => !!d);
 };
 
 export default getCanPut;

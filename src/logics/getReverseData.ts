@@ -8,7 +8,7 @@ import searchTop from './search/searchTop';
 import searchTopLeft from './search/searchTopLeft';
 import searchTopRight from './search/searchTopRight';
 
-const getReversibleStatus = (
+const getReverseData = (
   data: BoardData,
   x: number,
   y: number,
@@ -30,4 +30,4 @@ const getReversibleStatus = (
   return success ? reversibleState : null;
 };
 
-export default getReversibleStatus;
+export default getReverseData;
